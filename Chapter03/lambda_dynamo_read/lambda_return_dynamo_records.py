@@ -77,7 +77,7 @@ class DecimalEncoder(json.JSONEncoder):
 class DynamoRepository:
     def __init__(self, table_name):
         self.dynamo_client = resource(service_name='dynamodb',
-                                      region_name='eu-west-1')
+                                      region_name='us-west-1')
         self.table_name = table_name
         self.db_table = self.dynamo_client.Table(table_name)
 
@@ -129,10 +129,10 @@ class Controller():
 
 
 # For manual deployment
-# table_name = 'user-visits'
+table_name = 'user-visits'
 
 # For SAM deployment:
-table_name = 'user-visits-sam'
+# table_name = 'user-visits-sam'
 repo = DynamoRepository(table_name=table_name)
 
 

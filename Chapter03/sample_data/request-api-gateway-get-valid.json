@@ -24,7 +24,7 @@
     "stage": "prod"
   },
   "queryStringParameters": {
-    "foo": "bar"
+    "startdate": "bar"
   },
   "headers": {
     "Via": "1.1 08f323deadbeefa7af34d5feb414ce27.cloudfront.net (CloudFront)",
@@ -37,7 +37,7 @@
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
     "Upgrade-Insecure-Requests": "1",
     "X-Forwarded-Port": "443",
-    "Host": "1234567890.execute-api.us-east-1.amazonaws.com",
+    "Host": "1234567890.execute-api.us-west-1.amazonaws.com",
     "X-Forwarded-Proto": "https",
     "X-Amz-Cf-Id": "cDehVQoZnx43VYQb9j2-nvCh-9z396Uhbp027Y2JvkCPNLmGJHqlaA==",
     "CloudFront-Is-Tablet-Viewer": "false",
