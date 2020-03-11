@@ -78,27 +78,27 @@ You have created a user called `newuser` earlier and have a `crednetials.csv` wi
 $ aws configure
 AWS Access Key ID: <the Access key ID from the csv>
 AWS Secret Access Key: <the Secret access key from the csv>
-Default region name: <your AWS region such as eu-west-1>
+Default region name: <your AWS region such as us-west-1>
 Default output format: <optional>
 ```
 
 More details on setting up the AWS CLI is available [in the AWS Docs](https://docs.aws.amazon.com/lambda/latest/dg/setup-awscli.html).
 
-For choosing your AWS Region refer to [AWS Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html) generally those in the USA can use `us-east-1` and those in Europe can use `eu-west-1`
+For choosing your AWS Region refer to [AWS Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html) generally those in the USA can use `us-east-1` and those in Europe can use `us-west-1`
 
 ### 4. Update AccountId, Bucket and Profile
 Here I assume your AWS profile is `demo` you can change that under `bash/apigateway-lambda-dynamodb/common-variables.sh`.
 You will need to use a bucket or create one if you haven't already:
 ```bash
 $ aws s3api create-bucket --bucket mynewbucket231 --profile demo --create-bucket-configuration Loc
-ationConstraint=eu-west-1 --region eu-west-1
+ationConstraint=us-west-1 --region us-west-1
 
 ```
-You will also need to change the AWS accountId (current set to 000000000000). The AWS accountId is also used in some IAM policies in the IAM folder. In addition the region will have to be changed.
+You will also need to change the AWS accountId (current set to 357298582725). The AWS accountId is also used in some IAM policies in the IAM folder. In addition the region will have to be changed.
 
 to replace your accountId (assume your AWS accountId is 111111111111) you can do it manually or run:
 ```bash
-find ./ -type f -exec sed -i '' -e 's/000000000000/111111111111/' {} \;
+find ./ -type f -exec sed -i '' -e 's/357298582725/111111111111/' {} \;
 ```
 
 ### 5. Run Unit Tests
@@ -132,7 +132,7 @@ $ (cd ../../aws_dynamo; python dynamo_insert_items_from_file.py)
 Now the stack is up you can have a look at the API Gateway in the AWS Management Console and test the API in your browser.
 * API Gateway > lambda-dynamo-data-api
 * Stages > Prod > Get
-* Copy the Invoke URL into a new tab, e.g. https://XXXXXXXXXX.execute-api.eu-west-1.amazonaws.com/Prod/visits/{resourceId}
+* Copy the Invoke URL into a new tab, e.g. https://XXXXXXXXXX.execute-api.us-west-1.amazonaws.com/Prod/visits/{resourceId}
 * You should get a message `resource_id not a number` as the ID is not valid
 * Replace {resourceId} in the URL with 324
 if all is working you should see some returned JSON records. Well done if so!

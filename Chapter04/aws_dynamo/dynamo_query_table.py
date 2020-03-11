@@ -36,7 +36,7 @@ class DecimalEncoder(json.JSONEncoder):
 class DynamoRepository:
     """abstracts all interactions with DynamoDB including the connection and querying of tables
     """
-    def __init__(self, target_dynamo_table, region='eu-west-1'):
+    def __init__(self, target_dynamo_table, region='us-west-1'):
         self.dynamodb = resource(service_name='dynamodb', region_name=region)
         self.dynamo_table = target_dynamo_table
         self.table = self.dynamodb.Table(self.dynamo_table)

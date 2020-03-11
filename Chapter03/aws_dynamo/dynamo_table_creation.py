@@ -25,7 +25,7 @@ import boto3
 def create_dynamo_table(table_name_value, enable_streams=False,
                         read_capacity=1,
                         write_capacity=1,
-                        region='eu-west-1'):
+                        region='us-west-1'):
     table_name = table_name_value
     print('creating table: ' + table_name)
     try:

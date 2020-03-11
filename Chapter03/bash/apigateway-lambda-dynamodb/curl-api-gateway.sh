@@ -2,7 +2,7 @@
 # Copyright (c) 2017-2019 Starwolf Ltd and Richard Freeman. All Rights Reserved.
 # Licensed under the Apache License, Version 2.0
 
-#endpoint="https://xxxxx.execute-api.eu-west-1.amazonaws.com/Prod/visits/324"
+#endpoint="https://xxxxx.execute-api.us-west-1.amazonaws.com/Prod/visits/324"
 . ./common-variables.sh
 
 endpoint="$(python3 get_apigateway_endpoint.py -e ${template})"

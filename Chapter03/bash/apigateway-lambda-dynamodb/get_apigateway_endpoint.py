@@ -30,12 +30,12 @@ logger.setLevel(logging.INFO)
 
 
 def get_apigateway_names(endpoint_name):
-    client = boto3.client(service_name='apigateway', region_name='eu-west-1')
+    client = boto3.client(service_name='apigateway', region_name='us-west-1')
     apis = client.get_rest_apis()
     for api in apis['items']:
         if api['name'] == endpoint_name:
             api_id = api['id']
-            region = 'eu-west-1'
+            region = 'us-west-1'
             stage = 'Prod'
             resource = 'visits/324'
             #return F"https://{api_id}.execute-api.{region}.amazonaws.com/{stage}/{resource}"

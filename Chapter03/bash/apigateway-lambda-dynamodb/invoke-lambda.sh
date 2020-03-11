@@ -9,7 +9,7 @@ status_code=$(aws lambda invoke --invocation-type RequestResponse \
     --payload file://../../sample_data/request-api-gateway-get-valid.json outputfile.tmp \
     --profile ${profile})
 #status_code=$(aws lambda invoke --invocation-type Event --function-name lambda-dynamo-xray-sam \
-# --region eu-west-1 --region eu-west-1 --payload file://../../sample_data/request-api-gateway-get-valid.json \
+# --region us-west-1 --region us-west-1 --payload file://../../sample_data/request-api-gateway-get-valid.json \
 # outputfile.tmp)
 echo "$status_code"
 if echo "$status_code" | grep -q "200";
