@@ -129,10 +129,10 @@ class Controller():
 
 
 # For manual deployment
-table_name = 'user-visits'
+# table_name = 'user-visits'
 
 # For SAM deployment:
-# table_name = 'user-visits-sam'
+table_name = 'user-visits-sam'
 repo = DynamoRepository(table_name=table_name)
 
 
