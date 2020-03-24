@@ -21,7 +21,7 @@ import json
 
 from unittest import mock
 
-from lambda_dynamo_read import lambda_return_dynamo_records as lambda_query_dynamo
+import lambda_return_dynamo_records as lambda_query_dynamo
 
 
 class TestIndexGetMethod(unittest.TestCase):

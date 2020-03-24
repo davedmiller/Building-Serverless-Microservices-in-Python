@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="PYTHON_MODULE" version="4">
   <component name="NewModuleRootManager">
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/Chapter04/lambda_dynamo_read" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Chapter04/test" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Chapter04/aws_dynamo" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Chapter04/bash/apigateway-lambda-dynamodb" isTestSource="false" />
+    </content>
     <orderEntry type="jdk" jdkName="Python 3.7 (KHGAWS)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
