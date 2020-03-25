@@ -19,23 +19,62 @@ This packages inserts records from a file into specified DynamoDB table
 import csv
 
 from boto3 import resource
+import json
 
 
 class DynamoRepository:
     def __init__(self, target_dynamo_table, region='us-west-1'):
         self.dynamodb = resource(service_name='dynamodb', region_name=region)
         self.target_dynamo_table = target_dynamo_table
-        self.table = self.dynamodb.Table(self.target_dynamo_table)
+        try:
+            response = self.dynamodb.create_table(
+                AttributeDefinitions = [
+                    {
+                        'AttributeName': 'EventId',
+                        'AttributeType': 'S'
+                    },
+                    {
+                        'AttributeName': 'EventDay',
+                        'AttributeType': 'N'
+                    },
+                ],
+                KeySchema=[
+                    {
+                        'AttributeName': 'EventId',
+                        'KeyType': 'HASH'
+                    },
+                    {
+                        'AttributeName': 'EventDay',
+                        'KeyType': 'RANGE'
+                    }
+                ],
+                ProvisionedThroughput = {
+                    'ReadCapacityUnits': 1,
+                    'WriteCapacityUnits': 1
+                },
+                TableName=target_dynamo_table
+            )
+        except Exception as ex:
+            print(f'{ex}')
+        finally:
+            self.table = self.dynamodb.Table(self.target_dynamo_table)
+
 
     def update_dynamo_event_counter(self, event_name, event_datetime, event_count=1):
-        response = self.table.update_item(
-            Key={
-                'EventId': str(event_name),
-                'EventDay': int(event_datetime)
-            },
-            ExpressionAttributeValues={":eventCount": int(event_count)},
-            UpdateExpression="ADD EventCount :eventCount")
-        return response
+        try:
+            response = self.table.update_item(
+                Key={
+                    'EventId': str(event_name),
+                    'EventDay': int(event_datetime)
+                },
+                ExpressionAttributeValues={":eventCount": int(event_count)},
+                UpdateExpression="ADD EventCount :eventCount")
+        except Exception as ex:
+            print(f'Exception occurred of type {ex} occured when writing data record {event_name}, '
+                  f'{event_datetime}, {event_count}')
+            return None
+        else:
+            return response
 
 
 def main():
@@ -52,7 +91,8 @@ def main():
             response = dynamo_repo.update_dynamo_event_counter(row['EventId'],
                                                                row['EventDay'],
                                                                row['EventCount'])
-            print(response)
+            # tip from: https://stackoverflow.com/questions/3229419/how-to-pretty-print-nested-dictionaries
+            print(json.dumps(response, sort_keys=True, indent=4))
 
 
 if __name__ == '__main__':
