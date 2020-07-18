@@ -6,6 +6,9 @@
       <sourceFolder url="file://$MODULE_DIR$/Chapter04/test" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Chapter04/aws_dynamo" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Chapter04/bash/apigateway-lambda-dynamodb" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Chapter04" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Chapter02" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Chapter03" isTestSource="false" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.7 (KHGAWS)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -13,5 +16,12 @@
   <component name="PyDocumentationSettings">
     <option name="format" value="PLAIN" />
     <option name="myDocStringFormat" value="Plain" />
+  </component>
+  <component name="TemplatesService">
+    <option name="TEMPLATE_FOLDERS">
+      <list>
+        <option value="$MODULE_DIR$/Chapter04/lambda_dynamo_read" />
+      </list>
+    </option>
   </component>
 </module>

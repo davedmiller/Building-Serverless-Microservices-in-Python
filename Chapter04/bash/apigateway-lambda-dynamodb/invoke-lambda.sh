@@ -4,6 +4,11 @@
 
 . ./common-variables.sh
 rm outputfile.tmp
+echo "template=$template"
+echo "region=$region"
+echo "profile=$profile"
+cat ../../sample_data/request-api-gateway-get-valid.json
+
 status_code=$(aws lambda invoke --invocation-type RequestResponse \
     --function-name ${template}-sam --region ${region} \
     --payload file://../../sample_data/request-api-gateway-get-valid.json outputfile.tmp \
@@ -11,6 +16,7 @@ status_code=$(aws lambda invoke --invocation-type RequestResponse \
 #status_code=$(aws lambda invoke --invocation-type Event --function-name lambda-dynamo-xray-sam \
 # --region us-west-1 --region us-west-1 --payload file://../../sample_data/request-api-gateway-get-valid.json \
 # outputfile.tmp)
+
 echo "$status_code"
 if echo "$status_code" | grep -q "200";
 then
